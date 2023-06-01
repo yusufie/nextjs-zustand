@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* register page starts */
+
+#registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#registerForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#registerForm input {
+  width: 24rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--foreground-rgb));
+  color: #000;
+}
+
+#registerForm label {
+  margin: 0.5rem 0;
+}
+
+#registerForm p {
+  font-size: 0.8rem;
+  color: red;
+}
+
+#registerForm button {
+  width: 24rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: royalblue;
+}
+
+#registerContainer p {
+  margin: 0.5rem 0;
+  width: 24rem;
+  text-align: center;
+}
+
+/* register page ends */
+
+
+/* login page starts */
+
+#loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#loginForm input {
+  width: 24rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--foreground-rgb));
+  color: #000;
+}
+
+#loginForm label {
+  margin: 0.5rem 0;
+}
+
+#loginForm p {
+  font-size: 0.8rem;
+  color: red;
+}
+
+#loginForm button {
+  width: 24rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: royalblue;
+}
+
+#loginContainer p {
+  margin: 0.5rem 0;
+  width: 24rem;
+  text-align: center;
+}
+
+/* login page ends */
+
+
+/* home page starts */
+
+/* home page ends */
+
+/* users page starts */
+
+#usersPage {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#usersContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+  width: 100%;
+}
+
+#usersHeader {
+  margin: 3rem;
+  font-size: 32px;
+}
+
+#usersSearch {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+
+#usersSearchInput {
+  width: 24rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--foreground-rgb));
+  color: #000;
+}
+
+#usersFilterButton {
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: gray 1px solid;
+
+}
+
+#usersNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+
+#usersList {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: gray 1px solid;
+  border-radius: 0.5rem;
+}
+
+#usersTable tr {
+  border-bottom: 1px solid gray;
+  align-items: start;
+  padding: 0.5rem;
+}
+
+#usersTable th {
+  text-align: left;
+  padding: 0.5rem;
+}
+
+#usersTable td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+#pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#pagination button {
+  padding: 0.5rem;
+  border: gray 1px solid;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+td img {
+text-align: center;
+}
+
+/* users page ends */
