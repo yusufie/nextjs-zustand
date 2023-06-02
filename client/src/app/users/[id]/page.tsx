@@ -9,6 +9,8 @@ function UserDetail() {
   const id = pathname.split("/").pop();
   const [user, setUser] = useState(null);
 
+  const [confirmUpdate, setConfirmUpdate] = useState(false);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -28,10 +30,52 @@ function UserDetail() {
   }
 
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue =
+      type === "checkbox" ? (checked ? "active" : "inactive") : value;
+
     setUser((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [name]: newValue,
     }));
+  };
+
+  const handleUpdateUser = async () => {
+    try {
+      // Show confirmation dialog
+      setConfirmUpdate(true);
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  };
+
+  const confirmUpdateUser = async () => {
+    try {
+      const response = await fetch(`/api/users/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        // User update successful
+        alert("User updated successfully");
+      } else {
+        console.error("Error updating user:", response.status);
+      }
+    } catch (error) {
+      console.error("Error updating user:", error);
+    } finally {
+      // Hide confirmation dialog
+      setConfirmUpdate(false);
+    }
+  };
+
+  const cancelUpdate = () => {
+    // Hide confirmation dialog
+    setConfirmUpdate(false);
   };
 
   return (
@@ -42,7 +86,7 @@ function UserDetail() {
         <h1 id="updateFormHeader">Update User</h1>
         <div id="updateForm">
           <div className="form-row">
-            <label>Name:</label>
+            <label>Name</label>
             <input
               type="text"
               value={user.fullName}
@@ -52,7 +96,7 @@ function UserDetail() {
           </div>
 
           <div className="form-row">
-            <label>Email:</label>
+            <label>Mail</label>
             <input
               type="text"
               value={user.email}
@@ -62,7 +106,7 @@ function UserDetail() {
           </div>
 
           <div className="form-row">
-            <label>Phone:</label>
+            <label>Phone</label>
             <input
               type="text"
               value={user.phone}
@@ -72,28 +116,53 @@ function UserDetail() {
           </div>
 
           <div className="form-row">
-            <label>Role:</label>
-            <input
-              type="option"
-              value={user.role}
-              name="role"
-              onChange={handleChange}
-            />
+            <label>Role</label>
+            <select value={user.role} name="role" onChange={handleChange}>
+              <option value="User">User</option>
+              <option value="Admin">Admin</option>
+            </select>
           </div>
 
           <div className="form-row">
-            <label>Active:</label>
-            <input
-              type="checkbox"
-              checked={user.active}
-              name="active"
-              onChange={handleChange}
-            />
+            <label>Active</label>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={user.status === "active"}
+                name="status"
+                onChange={handleChange}
+              />
+              <span className="slider"></span>
+            </label>
           </div>
         </div>
+
         <div id="updateButtonContainer">
-          <button>Update User</button>
+          <button onClick={handleUpdateUser}>Update User</button>
         </div>
+
+        {confirmUpdate && (
+          <div id="confirmUpdateModal">
+            <div id="confirmUpdateContent">
+              <h3>Confirm Changes</h3>
+              <p>Are you sure you want to update the user information?</p>
+              <div className="confirmButtonContainer">
+                <button
+                  onClick={confirmUpdateUser}
+                  className="confirmButton confirmButtonYes"
+                >
+                  Yes
+                </button>
+                <button
+                  onClick={cancelUpdate}
+                  className="confirmButton confirmButtonNo"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

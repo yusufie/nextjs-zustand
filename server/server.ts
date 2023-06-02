@@ -86,6 +86,29 @@ app.get('/api/users/:id', async (req, res) => {
 });
 
 
+// Update a user by ID
+app.put('/api/users/:id', async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updatedUser = req.body;
+
+    const user = await User.findByIdAndUpdate(userId, updatedUser, { new: true });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
+
+
+
 mongoose.connect('mongodb://127.0.0.1:27017/usersdata', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
