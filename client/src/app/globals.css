@@ -253,7 +253,7 @@ text-align: center;
 .form-row {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  /* align-items: flex-start; */
 }
 
 #updateFormHeader {
@@ -288,7 +288,7 @@ text-align: center;
 
 #updateButtonContainer {
   display: flex;
-  justify-content: end;
+  justify-content:flex-end;
   margin-left:auto;
 }
 

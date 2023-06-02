@@ -16,17 +16,34 @@ function Users() {
     // Fetch users from the API
     const fetchUsers = async () => {
       try {
-        const response = await fetch('/api/users');
+        const response = await fetch("/api/users");
         const data = await response.json();
         setUsers(data);
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       }
     };
 
     fetchUsers();
   }, []);
 
+  const deleteUser = async (userId) => {
+    try {
+      const response = await fetch(`/api/users/${userId}`, {
+        method: "DELETE",
+      });
+
+      if (response.status === 200) {
+        // User deleted successfully, update the user list
+        const updatedUsers = users.filter((user) => user._id !== userId);
+        setUsers(updatedUsers);
+      } else {
+        console.error("Error deleting user:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
 
   const navigateToUserDetails = (userId) => {
     router.push(`/users/${userId}`);
@@ -50,7 +67,7 @@ function Users() {
   );
 
   // Handle page navigation
-  const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   return (
     <div id="usersPage">
@@ -73,7 +90,7 @@ function Users() {
           </div>
         </div>
 
-        <div id="usersList" className="w-full">
+        <div id="usersList" className="flex flex-row">
           <table id="usersTable" className="w-full">
             <thead>
               <tr>
@@ -82,31 +99,71 @@ function Users() {
                 <th>PHONE</th>
                 <th>ROLE</th>
                 <th>ACTIVE</th>
-                <th></th>
               </tr>
             </thead>
-
-            <tbody>
+            <tbody className="">
               {currentRows.map((user: any) => (
-                <Link key={user._id} href={`/users/${user._id}`} passHref={true} >
-                <tr onClick={() => navigateToUserDetails(user._id)}>
+                <tr
+                  key={user._id}
+                  onClick={() => navigateToUserDetails(user._id)}
+                >
                   <td>{user.fullName}</td>
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
                   <td>{user.role}</td>
                   <td id="activeCircle">
                     {user.status === "active" ? (
-                      <Image src="/icons/circle-green-icon.png" alt="circle-green" width={16} height={16} /> ) : (
-                      <Image src="/icons/circle-red-icon.png" alt="circle-red" width={16} height={16} />
-                      )}
-                  </td>
-                  <td>
-                    <Image src="/icons/trash-icon.svg" alt="trash" width={20} height={20} />
+                      <Image
+                        src="/icons/circle-green-icon.png"
+                        alt="circle-green"
+                        width={16}
+                        height={16}
+                      />
+                    ) : (
+                      <Image
+                        src="/icons/circle-red-icon.png"
+                        alt="circle-red"
+                        width={16}
+                        height={16}
+                      />
+                    )}
                   </td>
                 </tr>
-                </Link>
               ))}
             </tbody>
+          </table>
+
+          <table id="usersTable" className="">
+
+            <thead>
+              <tr>
+                <th className=" invisible">DELETE</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {currentRows.map((user: any) => (
+                <tr key={user._id}>
+                  <td>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteUser(user._id);
+                      }}
+                      style={{ zIndex: 99 }}
+                    >
+                      <Image
+                        src="/icons/trash-icon.svg"
+                        alt="trash"
+                        width={20}
+                        height={20}
+                      />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            
           </table>
         </div>
 
