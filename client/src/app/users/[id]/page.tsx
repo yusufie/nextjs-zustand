@@ -1,5 +1,6 @@
 // pages/users/[id].js
 "use client";
+import Left from "../../../components/Left";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -26,13 +27,74 @@ function UserDetail() {
     return <div>Loading...</div>;
   }
 
+  const handleChange = (e) => {
+    setUser((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
-    <div>
-      <h1>User Detail</h1>
-      <p>ID: {user._id}</p>
-      <p>Name: {user.fullName}</p>
-      <p>Email: {user.email}</p>
-      {/* Render other user details */}
+    <div id="updatePage">
+      <Left />
+
+      <div id="updateContainer">
+        <h1 id="updateFormHeader">Update User</h1>
+        <div id="updateForm">
+          <div className="form-row">
+            <label>Name:</label>
+            <input
+              type="text"
+              value={user.fullName}
+              name="fullName"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-row">
+            <label>Email:</label>
+            <input
+              type="text"
+              value={user.email}
+              name="email"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-row">
+            <label>Phone:</label>
+            <input
+              type="text"
+              value={user.phone}
+              name="phone"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-row">
+            <label>Role:</label>
+            <input
+              type="option"
+              value={user.role}
+              name="role"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-row">
+            <label>Active:</label>
+            <input
+              type="checkbox"
+              checked={user.active}
+              name="active"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div id="updateButtonContainer">
+          <button>Update User</button>
+        </div>
+      </div>
     </div>
   );
 }

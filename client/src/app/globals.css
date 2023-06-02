@@ -227,3 +227,68 @@ text-align: center;
 }
 
 /* users page ends */
+
+
+/* users details page starts */
+
+#updatePage {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#updateContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+  width: 100%;
+}
+
+#updateForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+#updateFormHeader {
+  margin: 3rem;
+  font-size: 32px;
+}
+
+#updateForm input {
+  width: 24rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--foreground-rgb));
+  color: #000;
+}
+
+#updateForm label {
+  margin: 0.5rem 0;
+}
+
+#updateForm p {
+  font-size: 0.8rem;
+  color: red;
+}
+
+#updateButtonContainer {
+  display: flex;
+  justify-content: end;
+  margin-left:auto;
+}
+
+#updateButtonContainer button {
+  width: 8rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: royalblue;
+}
+
+/* users details page ends */
