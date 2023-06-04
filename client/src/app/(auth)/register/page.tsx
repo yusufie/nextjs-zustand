@@ -11,6 +11,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+
+import { getSession } from 'next-auth/react';
+
 function Register() {
   const phoneRegex = RegExp(
     /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
@@ -137,6 +140,25 @@ function Register() {
       </p>
     </div>
   );
+}
+
+
+// Update the getServerSideProps function
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/users', // Redirect to a protected page if the user is already authenticated
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
 
 export default Register;

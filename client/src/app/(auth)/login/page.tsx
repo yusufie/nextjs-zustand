@@ -12,7 +12,9 @@ import * as yup from "yup";
 
 import { useRouter } from "next/navigation";
 
-function Login() {
+import { getSession } from 'next-auth/react';
+
+function Login( { session } ) {
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -40,6 +42,14 @@ function Login() {
   
       if (response.status === 200) {
         console.log("User login successful");
+
+
+      // Retrieve the user session data from the API response
+      const userSession = await response.json();
+
+      // Save the session information in local storage
+      localStorage.setItem("session", JSON.stringify(userSession));
+
         setUser({ fullName: data.fullName, email: data.email }); // Update the user state
         navigate.push("/users"); // Navigate to the dashboard page
       } else {
@@ -49,6 +59,14 @@ function Login() {
       console.error("Error logging in:", error);
     }
   };
+
+
+  if (session) {
+    // If the user is already authenticated, redirect to a protected page
+    navigate.push("/users");
+    return null;
+  }
+
 
   return (
 
@@ -100,3 +118,14 @@ function Login() {
 }
 
 export default Login
+
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
+}
