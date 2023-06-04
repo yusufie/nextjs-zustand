@@ -73,8 +73,8 @@ function Users() {
     <div id="usersPage">
       <Left />
 
-      <div id="usersContainer">
-        <h1 id="usersHeader">Users</h1>
+      <div id="usersContainer" className=" bg-gray-100">
+        <h1 id="usersHeader" className=" font-bold text-gray-600">Users</h1>
 
         <div id="usersNav">
           <div id="usersSearch">
@@ -105,7 +105,7 @@ function Users() {
         <div id="usersList" className="flex flex-row">
           <table id="usersTable" className="w-full">
             <thead>
-              <tr>
+              <tr className=" text-gray-600 bg-gray-300">
                 <th>NAME</th>
                 <th>EMAIL</th>
                 <th>PHONE</th>
@@ -147,8 +147,8 @@ function Users() {
 
           <table id="usersTable" className="">
             <thead>
-              <tr>
-                <th className=" invisible">DELETE</th>
+              <tr className="bg-gray-300">
+                <th className="text-gray-300 bg-gray-300">DELETE</th>
               </tr>
             </thead>
 

@@ -88,7 +88,7 @@ function Login( { session } ) {
         <input
           type="email"
           id="email"
-          placeholder="Enter your email"
+          placeholder="Enter your mail"
           {...register("email")}
         />
         <p>{errors.email?.message}</p>
@@ -97,19 +97,21 @@ function Login( { session } ) {
         <input
           type="password"
           id="password"
-          placeholder="Enter your password"
+          placeholder="******"
           {...register("password")}
         />
         <p>{errors.password?.message}</p>
 
-        <Link href="#" className="my-4 text-blue-600"><span>Forgot your password ?</span></Link>
+        <Link href="#" className="my-4 text-blue-600">
+          <span>Forgot password ?</span>
+        </Link>
 
-        <button type="submit" className="">Sign in</button>
+        <button type="submit" className="">Sign In</button>
       </form>
 
       
-      <span className="my-8">
-        Don&apos;t have an account? <Link href="/register" className="text-blue-600">Sign up</Link>
+      <span id="signupSpan" className="">
+        Don&apos;t have an account? <Link href="/register" className="">Sign Up</Link>
       </span>
 
     </div>

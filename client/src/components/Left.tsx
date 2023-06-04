@@ -27,11 +27,12 @@ function Left() {
       <input
         type="search"
         placeholder="Search"
-        className="my-2 border border-gray-300"
+        className="my-2 border-4 border-gray-600"
+        id="leftSearch"
       />
 
       <ul className="flex flex-col justify-start items-start w-full mt-2">
-        <li className="inline font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400 ">
+        <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/" >
             <Image
               src="/icons/home-icon.png"
@@ -44,7 +45,7 @@ function Left() {
           </Link>
         </li>
 
-        <li className="font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400">
+        <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/projects">
             <Image
               src="/icons/projects-icon.png"
@@ -57,7 +58,7 @@ function Left() {
           </Link>
         </li>
 
-        <li className="font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400">
+        <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/tasks">
             <Image
               src="/icons/tasks-icon.png"
@@ -70,7 +71,7 @@ function Left() {
           </Link>
         </li>
 
-        <li className="font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400">
+        <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/users">
             <Image
               src="/icons/users-icon.png"
@@ -86,7 +87,7 @@ function Left() {
 
       
         <ul className="flex flex-col justify-start items-start w-full mt-auto">
-          <li className="font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400">
+          <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
             <Link href="/support">
               <Image
                 src="/icons/support-icon.png"
@@ -99,7 +100,7 @@ function Left() {
             </Link>
           </li>
 
-          <li className="font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400">
+          <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
             <Link href="/settings">
               <Image
                 src="/icons/settings-icon.png"

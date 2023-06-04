@@ -72,7 +72,7 @@ function Register() {
     <div  id="registerContainer">
       <Image src="/images/logo_gray.png" alt="logo" width={200} height={200} />
 
-      <h1>Crate your account</h1>
+      <h1>Create your account</h1>
       <p>Welcome! Please enter your details.</p>
 
       <form onSubmit={handleSubmit(onSubmit)} id="registerForm">
@@ -132,12 +132,13 @@ function Register() {
 
       <p>
         By clicking the button, you are agreeing to our{" "}
-        <a href="#">Terms and Services</a>
+        <Link href="#">Terms and Services</Link>
       </p>
 
-      <p>
-        Do you have an account? <Link href="/login">Sign In</Link>
-      </p>
+      <span id="registerSpan" className="">
+        Do you have an account? <Link href="/login" >Sign In</Link>
+      </span>
+
     </div>
   );
 }
