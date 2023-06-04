@@ -85,8 +85,20 @@ function Users() {
             />
           </div>
 
-          <div id="userFilter">
-            <button id="usersFilterButton">Filter</button>
+          <div id="userFilter" className="flex flex-row">
+            <button
+              id="usersFilterButton"
+              className="inline items-center justify-center"
+            >
+              <Image
+                src="/icons/filter-icon.png"
+                alt="trash"
+                width={24}
+                height={24}
+                className="inline-block mr-4"
+              />
+              <p className="inline-block">Filter</p>
+            </button>
           </div>
         </div>
 
@@ -134,7 +146,6 @@ function Users() {
           </table>
 
           <table id="usersTable" className="">
-
             <thead>
               <tr>
                 <th className=" invisible">DELETE</th>
@@ -163,7 +174,6 @@ function Users() {
                 </tr>
               ))}
             </tbody>
-            
           </table>
         </div>
 

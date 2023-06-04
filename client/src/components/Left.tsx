@@ -12,13 +12,13 @@ function Left() {
   const user = useStore((state) => state.user);
 
   return (
-    <aside className="flex flex-col justify-start items-start w-64 h-screen border-r p-4 ">
+    <aside className="flex flex-col justify-start items-start w-96 h-screen border-r p-4 ">
       <Link href="/">
         <Image
           src="/images/logo_gray.png"
           alt="logo"
-          width={200}
-          height={200}
+          width={360}
+          height={360}
           className="mx-auto py-4"
           priority={true}
         />
@@ -27,12 +27,12 @@ function Left() {
       <input
         type="search"
         placeholder="Search"
-        className="w-full p-2 my-2 border border-gray-300 rounded-md"
+        className="my-2 border border-gray-300"
       />
 
-      <ul className="flex flex-col justify-start items-start w-full">
+      <ul className="flex flex-col justify-start items-start w-full mt-2">
         <li className="inline font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400 ">
-          <Link href="/">
+          <Link href="/" >
             <Image
               src="/icons/home-icon.png"
               alt="logo"
@@ -84,9 +84,9 @@ function Left() {
         </li>
       </ul>
 
-      <div className=" mt-auto">
-        <ul className="flex flex-col justify-start items-start w-full">
-          <li className="w-full p-2 my-2 rounded-md hover:bg-slate-400">
+      
+        <ul className="flex flex-col justify-start items-start w-full mt-auto">
+          <li className="font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400">
             <Link href="/support">
               <Image
                 src="/icons/support-icon.png"
@@ -99,7 +99,7 @@ function Left() {
             </Link>
           </li>
 
-          <li className="w-full p-2 my-2 rounded-md hover:bg-slate-400">
+          <li className="font-bold w-full p-2 my-2 rounded-md hover:bg-slate-400">
             <Link href="/settings">
               <Image
                 src="/icons/settings-icon.png"
@@ -119,19 +119,19 @@ function Left() {
             <p className=" text-sm text-gray-400">{user.email}</p>
           </div>
 
-          <div className="flex items-center justify-center ms-4">
+          <div className="flex items-center justify-center">
             <Link href="/login">
               <Image
                 src="/icons/logout-icon.png"
                 alt="logo"
                 width={20}
                 height={20}
-                className=" inline-block mr-2"
+                className="inline-block ms-24 mr-4"
               />
             </Link>
           </div>
         </div>
-      </div>
+      
     </aside>
   );
 }

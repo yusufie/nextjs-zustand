@@ -1,8 +1,10 @@
 // pages/users/[id].js
 "use client";
+import Link from "next/link";
 import Left from "../../../components/Left";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 function UserDetail() {
   const pathname = usePathname();
@@ -83,7 +85,24 @@ function UserDetail() {
       <Left />
 
       <div id="updateContainer">
+
+
+        <div className="inline-block">
+          <Link href="/users" className=" inline">
+            <Image
+              src="/icons/filter-icon.png"
+              alt="trash"
+              width={24}
+              height={24}
+              className="inline-block mr-4"
+            />
+            Back to Users
+          </Link>
+        </div>
+
+
         <h1 id="updateFormHeader">Update User</h1>
+
         <div id="updateForm">
           <div className="form-row">
             <label>Name</label>
@@ -137,8 +156,14 @@ function UserDetail() {
           </div>
         </div>
 
-        <div id="updateButtonContainer">
-          <button onClick={handleUpdateUser}>Update User</button>
+        <div id="updateButton">
+          <div className=" flex flex-col ">
+            {/* <button onClick={() => window.history.back()}>Cancel</button> */}
+          </div>
+
+          <div className=" flex flex-col ml-64">
+            <button onClick={handleUpdateUser}>Update User</button>
+          </div>
         </div>
 
         {confirmUpdate && (
