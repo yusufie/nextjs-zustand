@@ -116,8 +116,8 @@ function Left() {
 
         <div className="flex flex-row">
           <div>
-            <h2 className="  font-bold text-gray-400">{user.fullName}</h2>
-            <p className=" text-sm text-gray-400">{user.email}</p>
+            <h2 className="  font-bold text-gray-600">{user.fullName}</h2>
+            <p className=" text-sm font-medium text-gray-400">{user.email}</p>
           </div>
 
           <div className="flex items-center justify-center">

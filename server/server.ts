@@ -93,7 +93,7 @@ app.post('/api/login', async (req, res) => {
     }
 
     // User login successful
-    res.status(200).json({ message: 'User login successful' });
+    res.status(200).json({ fullName: user.fullName, email: user.email });
   } catch (error) {
     console.error('Error logging in:', error);
     res.status(500).json({ error: 'Server error' });

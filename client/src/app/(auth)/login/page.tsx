@@ -50,7 +50,10 @@ function Login( { session } ) {
       // Save the session information in local storage
       localStorage.setItem("session", JSON.stringify(userSession));
 
-        setUser({ fullName: data.fullName, email: data.email }); // Update the user state
+      // Retrieve the users full name from the user data
+      const fullName = userSession.fullName;
+
+        setUser({ fullName, email: data.email }); // Update the user state
         navigate.push("/users"); // Navigate to the dashboard page
       } else {
         console.log("User login failed");
