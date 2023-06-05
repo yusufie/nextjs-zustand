@@ -88,20 +88,20 @@ function UserDetail() {
 
 
         <div className="inline-block">
-          <Link href="/users" className=" inline">
+          <Link href="/users" className="inline text-lg font-medium text-gray-400">
             <Image
-              src="/icons/filter-icon.png"
+              src="/icons/long-left-arrow-icon.png"
               alt="trash"
               width={24}
               height={24}
-              className="inline-block mr-4"
+              className="inline-block mr-2"
             />
             Back to Users
           </Link>
         </div>
 
 
-        <h1 id="updateFormHeader">Update User</h1>
+        <h1 id="updateFormHeader" className=" font-bold text-gray-600">Update User</h1>
 
         <div id="updateForm">
           <div className="form-row">
@@ -142,8 +142,8 @@ function UserDetail() {
             </select>
           </div>
 
-          <div className="form-row">
-            <label>Active</label>
+          <div className="form-switch">
+            <span className="inline-block mr-4 text-sm font-medium text-gray-600">Active</span>
             <label className="switch">
               <input
                 type="checkbox"

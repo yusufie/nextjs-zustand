@@ -95,9 +95,9 @@ function Users() {
                 alt="trash"
                 width={24}
                 height={24}
-                className="inline-block mr-4"
+                className="inline-block mr-2"
               />
-              <p className="inline-block">Filter</p>
+              <p className="inline-block text-gray-600 font-bold">Filter</p>
             </button>
           </div>
         </div>
@@ -185,8 +185,8 @@ function Users() {
             <Image
               src="/icons/left-arrow-icon.svg"
               alt="left-arrow"
-              width={20}
-              height={20}
+              width={16}
+              height={16}
             />
           </button>
 
@@ -227,8 +227,8 @@ function Users() {
             <Image
               src="/icons/right-arrow-icon.svg"
               alt="right-arrow"
-              width={20}
-              height={20}
+              width={16}
+              height={16}
             />
           </button>
         </div>
