@@ -154,6 +154,7 @@ function Users() {
                 <tr
                   key={user._id}
                   onClick={() => navigateToUserDetails(user._id)}
+                  className="usersTableRow"
                 >
                 <td>
                   {/* Render the user's name with highlighted matching letters */}
@@ -183,6 +184,7 @@ function Users() {
                       />
                     )}
                   </td>
+                  <span className="moreDetails">Click to see more details </span>
                 </tr>
               ))}
             </tbody>

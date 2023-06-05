@@ -282,6 +282,35 @@ body {
   font-weight: 600;
 }
 
+
+.usersTableRow {
+  position: relative;
+  cursor: pointer;
+}
+
+.moreDetails {
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(46,123,248);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 12px;
+  transition: visibility 0s, opacity 0.3s ease;
+}
+
+.usersTableRow:hover .moreDetails {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
 #pagination {
   display: flex;
   flex-direction: row;
