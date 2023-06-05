@@ -143,17 +143,22 @@ function UserDetail() {
           </div>
 
           <div className="form-switch">
-            <span className="inline-block mr-4 text-sm font-medium text-gray-600">Active</span>
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={user.status === "active"}
-                name="status"
-                onChange={handleChange}
-              />
-              <span className="slider"></span>
-            </label>
+            <div className="flex items-center">
+                <span className="pr-4 text-sm font-medium text-gray-600">
+                  {user.status === "active" ? "Active" : "Inactive"}
+                </span>
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={user.status === "active"}
+                    name="status"
+                    onChange={handleChange}
+                  />
+                  <span className="slider"></span>
+                </label>
+            </div>
           </div>
+
         </div>
 
         <div id="updateButton">
