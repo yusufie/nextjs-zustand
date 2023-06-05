@@ -406,14 +406,18 @@ text-align: center;
 }
 
 #confirmUpdateContent {
-  background-color: royalblue;
+  background-color: rgb(46,123,248);
+  color: white;
   padding: 20px;
   border-radius: 4px;
   text-align: center;
 }
 
 .confirmButtonContainer {
-  margin-top: 20px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .confirmButton {
@@ -424,14 +428,14 @@ text-align: center;
 }
 
 .confirmButtonYes {
-  background-color: #00ff08;
-  color: black;
+  background-color: #00c707;
+  color: white;
   margin-right: 10px;
 }
 
 .confirmButtonNo {
-  background-color: #ff1100;
-  color: black;
+  background-color: #e40f00;
+  color: white;
 }
 
 /* confirm cancel modal ends */

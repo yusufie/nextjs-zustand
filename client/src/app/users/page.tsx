@@ -10,6 +10,10 @@ import { useRouter } from "next/navigation";
 function Users() {
   const [users, setUsers] = useState([]);
 
+  const [showModal, setShowModal] = useState(false);
+const [selectedUser, setSelectedUser] = useState(null);
+
+
   const router = useRouter();
 
   useEffect(() => {
@@ -27,6 +31,27 @@ function Users() {
     fetchUsers();
   }, []);
 
+  const handleDeleteUser = (user) => {
+    setSelectedUser(user);
+    setShowModal(true);
+  };
+
+  const confirmDeleteUser = async () => {
+    try {
+      // Perform the delete operation
+      await deleteUser(selectedUser._id);
+      setShowModal(false);
+      setSelectedUser(null);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
+  const cancelDeleteUser = () => {
+    setShowModal(false);
+    setSelectedUser(null);
+  };
+  
   const deleteUser = async (userId) => {
     try {
       const response = await fetch(`/api/users/${userId}`, {
@@ -34,7 +59,10 @@ function Users() {
       });
 
       if (response.status === 200) {
-        // User deleted successfully, update the user list
+        // User deleted successfully
+        alert("User deleted successfully");
+        
+        // update the user list
         const updatedUsers = users.filter((user) => user._id !== userId);
         setUsers(updatedUsers);
       } else {
@@ -157,10 +185,7 @@ function Users() {
                 <tr key={user._id}>
                   <td>
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        deleteUser(user._id);
-                      }}
+                      onClick={() => handleDeleteUser(user)}
                       style={{ zIndex: 99 }}
                     >
                       <Image
@@ -174,6 +199,30 @@ function Users() {
                 </tr>
               ))}
             </tbody>
+
+            {showModal && (
+          <div id="confirmUpdateModal">
+            <div id="confirmUpdateContent">
+              <h3>Confirm Changes</h3>
+              <p>Are you sure you want to delete the user?</p>
+              <div className="confirmButtonContainer">
+                <button
+                  onClick={confirmDeleteUser}
+                  className="confirmButton confirmButtonYes"
+                >
+                  Yes
+                </button>
+                <button
+                  onClick={cancelDeleteUser}
+                  className="confirmButton confirmButtonNo"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
           </table>
         </div>
 
