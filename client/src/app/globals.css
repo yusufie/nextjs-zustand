@@ -259,12 +259,13 @@ body {
 #usersList {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border: 2px solid lightgray;
   border-radius: 0.5rem;
+  border: 1px solid lightgray;
+  background-color: white;
 }
 
 #usersTable tr {
-  border-bottom: 2px solid lightgray;
+  border-bottom: 1px solid lightgray;
   align-items: start;
   padding: 0.5rem;
 }
@@ -294,9 +295,15 @@ body {
 
 #pagination button {
   padding: 0.5rem;
-  border: 2px solid lightgray;
+  border: 1px solid lightgray;
   width: 2.5rem;
   height: 2.5rem;
+}
+
+#pagination .active {
+  background-color:rgb(46,123,248);
+  color: white;
+
 }
 
 td img {
@@ -317,7 +324,9 @@ text-align: center;
 #updateContainer {
   display: flex;
   flex-direction: column;
-  margin: 3rem;
+  padding-top: 4rem;
+  padding-right: 4rem;
+  padding-left: 4rem;
   width: 100%;
 }
 
@@ -343,12 +352,15 @@ text-align: center;
   width: 24rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid rgb(var(--foreground-rgb));
-  color: #000;
+  border: 2px solid lightgray;
+  color: rgb(69, 69, 69);
 }
 
 #updateForm label {
   margin: 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(69, 69, 69);
 }
 
 #updateForm p {
@@ -360,7 +372,7 @@ text-align: center;
   width: 24rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid rgb(var(--foreground-rgb));
+  border: 2px solid lightgray;
   color: #000;
 }
 
@@ -374,7 +386,8 @@ text-align: center;
   width: 8rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: rgb(46,123,248);
+  background-color:rgb(46,123,248);
+  color: white;
 }
 
 
