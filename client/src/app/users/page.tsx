@@ -4,14 +4,13 @@ import Image from "next/image";
 import "../globals.css";
 import Left from "../../components/Left";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function Users() {
   const [users, setUsers] = useState([]);
-
+  const [searchQuery, setSearchQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
-const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
 
 
   const router = useRouter();
@@ -20,16 +19,22 @@ const [selectedUser, setSelectedUser] = useState(null);
     // Fetch users from the API
     const fetchUsers = async () => {
       try {
-        const response = await fetch("/api/users");
+        const response = await fetch(`/api/users?fullName=${searchQuery}`); 
         const data = await response.json();
         setUsers(data);
+
       } catch (error) {
         console.error("Error fetching users:", error);
       }
     };
 
     fetchUsers();
-  }, []);
+  }, [searchQuery]); // Include searchQuery as a dependency
+
+  const highlightText = (text, query) => {
+    const regex = new RegExp(`(${query})`, "gi");
+    return text.replace(regex, "<span class='highlight'>$1</span>");
+  };
 
   const handleDeleteUser = (user) => {
     setSelectedUser(user);
@@ -62,8 +67,9 @@ const [selectedUser, setSelectedUser] = useState(null);
         // User deleted successfully
         alert("User deleted successfully");
         
-        // update the user list
-        const updatedUsers = users.filter((user) => user._id !== userId);
+        // Update the user list based on the search query
+        const updatedUsers = users.filter((user) => 
+        user.fullName.toLowerCase().includes(searchQuery.toLowerCase()));
         setUsers(updatedUsers);
       } else {
         console.error("Error deleting user:", response.statusText);
@@ -110,6 +116,8 @@ const [selectedUser, setSelectedUser] = useState(null);
               type="text"
               id="usersSearchInput"
               placeholder="Search User"
+              value={searchQuery} // Bind the searchQuery state
+            onChange={(e) => setSearchQuery(e.target.value)} // Update the searchQuery state when the input value changes
             />
           </div>
 
@@ -147,7 +155,14 @@ const [selectedUser, setSelectedUser] = useState(null);
                   key={user._id}
                   onClick={() => navigateToUserDetails(user._id)}
                 >
-                  <td>{user.fullName}</td>
+                <td>
+                  {/* Render the user's name with highlighted matching letters */}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: highlightText(user.fullName, searchQuery),
+                    }}
+                  />
+                </td>
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
                   <td>{user.role}</td>

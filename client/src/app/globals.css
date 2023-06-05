@@ -310,6 +310,11 @@ td img {
 text-align: center;
 }
 
+.highlight {
+  color: red;
+  font-weight: bold;
+}
+
 /* users page ends */
 
 

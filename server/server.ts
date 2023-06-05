@@ -103,7 +103,12 @@ app.post('/api/login', async (req, res) => {
 // Get all users
 app.get('/api/users', async (req, res) => {
   try {
-    const users = await User.find();
+    const searchQuery = req.query.fullName || ""; // Get the fullName query parameter or use an empty string if not provided
+
+    const users = await User.find({
+      fullName: { $regex: searchQuery, $options: 'i' } // Perform a case-insensitive search using $regex
+    });
+
     res.json(users);
   } catch (error) {
     console.error('Error getting users:', error);
