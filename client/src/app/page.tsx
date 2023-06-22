@@ -1,20 +1,21 @@
 "use client"
-import React from 'react';
+import React, {useEffect} from 'react';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 function Home({ session }) {
-  const router = useRouter();
 
-  if (!session) {
-    router.replace('/login');
-    return null;
-  }
+  const router = useRouter();
+  useEffect(() => {
+    if(typeof window !== 'undefined' && !session) {
+      router.replace('/login');
+    }
+  }, [session, router]);
 
   return (
     <div>
       <h1>Welcome to the Home Page!</h1>
-      <p>User: {session.user.email}</p>
+      {session && <p>User: {session.user.email}</p>}
       <button onClick={() => router.replace("/logout")}>Logout</button>
     </div>
   );
